@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: "Realtime Chat",
@@ -14,7 +20,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="scroll-smooth antialiased">{children}</body>
+      <body
+        className={`${inter.variable} scroll-smooth font-inter antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
