@@ -38,10 +38,9 @@ export const Input = ({
           autoComplete={id}
           {...register(id, { required })}
           className={cn(
-            'block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset placeholder:text-gray-400 focus:ring-2 focus:ring-sky-600 focus:ring-inset sm:text-sm sm:leading-6',
+            'block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset placeholder:text-gray-400 focus:ring-2 focus:ring-sky-600 focus:ring-inset disabled:cursor-default disabled:opacity-50 sm:text-sm sm:leading-6',
             {
               'focus:ring-rose-500': errors[id],
-              'cursor-default opacity-50': disabled,
             },
           )}
         />
