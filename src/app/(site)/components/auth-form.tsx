@@ -3,6 +3,7 @@
 import { AuthSocialButton, Button, Input } from '@/components';
 import axios from 'axios';
 import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import { useCallback, useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -13,6 +14,8 @@ type Variant = 'LOGIN' | 'REGISTER';
 export const AuthForm = () => {
   const [variant, setVariant] = useState<Variant>('LOGIN');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const router = useRouter();
 
   const toggleVariant = useCallback(() => {
     setVariant((prev) => (prev === 'LOGIN' ? 'REGISTER' : 'LOGIN'));
@@ -36,7 +39,10 @@ export const AuthForm = () => {
     if (variant === 'REGISTER') {
       axios
         .post('/api/register', data)
-        .then(() => toast.success('Successfully registered!'))
+        .then(() => {
+          toast.success('Successfully registered!');
+          signIn('credentials', data);
+        })
         .catch(() => toast.error('Something went wrong!'))
         .finally(() => setIsLoading(false));
     }
@@ -48,6 +54,7 @@ export const AuthForm = () => {
             toast.error('Invalid credentialss!');
           } else if (res?.ok) {
             toast.success('Logged in!');
+            router.replace('/users');
           }
         })
         .catch(() => toast.error('Something went wrong!'))

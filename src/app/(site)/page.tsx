@@ -1,7 +1,15 @@
+import { auth } from '@/lib/auth';
 import Image from 'next/image';
+import { redirect } from 'next/navigation';
 import { AuthForm } from './components';
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth();
+
+  if (session?.user) {
+    redirect('/users');
+  }
+
   return (
     <main className='flex min-h-full flex-col justify-center bg-gray-100 py-12 sm:px-6 lg:px-8'>
       {/* Logo and Description*/}

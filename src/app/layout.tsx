@@ -1,3 +1,4 @@
+import { AuthContext } from '@/context/AuthContext';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
@@ -24,8 +25,10 @@ export default function RootLayout({
       <body
         className={`${inter.variable} font-inter scroll-smooth antialiased`}
       >
-        <Toaster />
-        {children}
+        <AuthContext>
+          <Toaster />
+          {children}
+        </AuthContext>
       </body>
     </html>
   );
