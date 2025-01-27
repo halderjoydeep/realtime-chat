@@ -55,10 +55,19 @@ export const AuthForm = () => {
     }
   };
 
-  const socialAction = (action: string) => {
+  const socialAction = (provider: string) => {
     setIsLoading(true);
 
-    // NextAuth Social Sign in
+    signIn(provider, { redirect: false })
+      .then((res) => {
+        if (res?.error) {
+          toast.error('Invalid credentialss!');
+        } else if (res?.ok) {
+          toast.success('Logged in!');
+        }
+      })
+      .catch(() => toast.error('Something went wrong!'))
+      .finally(() => setIsLoading(false));
   };
 
   return (
