@@ -2,6 +2,7 @@
 
 import { AuthSocialButton, Button, Input } from '@/components';
 import axios from 'axios';
+import { signIn } from 'next-auth/react';
 import { useCallback, useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -41,7 +42,16 @@ export const AuthForm = () => {
     }
 
     if (variant === 'LOGIN') {
-      // NextAuth Signin
+      signIn('credentials', { ...data, redirect: false })
+        .then((res) => {
+          if (res?.error) {
+            toast.error('Invalid credentialss!');
+          } else if (res?.ok) {
+            toast.success('Logged in!');
+          }
+        })
+        .catch(() => toast.error('Something went wrong!'))
+        .finally(() => setIsLoading(false));
     }
   };
 
