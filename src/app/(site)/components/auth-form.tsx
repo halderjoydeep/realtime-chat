@@ -4,6 +4,7 @@ import { AuthSocialButton, Button, Input } from '@/components';
 import axios from 'axios';
 import { useCallback, useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { BsGithub, BsGoogle } from 'react-icons/bs';
 
 type Variant = 'LOGIN' | 'REGISTER';
@@ -32,7 +33,11 @@ export const AuthForm = () => {
     setIsLoading(true);
 
     if (variant === 'REGISTER') {
-      axios.post('/api/register', data);
+      axios
+        .post('/api/register', data)
+        .then(() => toast.success('Successfully registered!'))
+        .catch(() => toast.error('Something went wrong!'))
+        .finally(() => setIsLoading(false));
     }
 
     if (variant === 'LOGIN') {
@@ -55,7 +60,7 @@ export const AuthForm = () => {
             label='Name'
             errors={errors}
             register={register}
-            required={true}
+            // required={true}
             disabled={isLoading}
           />
         )}
@@ -65,7 +70,7 @@ export const AuthForm = () => {
           type='email'
           errors={errors}
           register={register}
-          required={true}
+          // required={true}
           disabled={isLoading}
         />
         <Input
@@ -74,7 +79,7 @@ export const AuthForm = () => {
           type='password'
           errors={errors}
           register={register}
-          required={true}
+          // required={true}
           disabled={isLoading}
         />
 
