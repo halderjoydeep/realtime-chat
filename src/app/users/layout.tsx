@@ -1,4 +1,4 @@
-import { DesktopSideBar } from './components';
+import { DesktopSideBar, MobileFooter } from './components';
 
 export default function UsersLayout({
   children,
@@ -6,6 +6,7 @@ export default function UsersLayout({
   return (
     <div className='h-full'>
       <DesktopSideBar />
+      <MobileFooter />
       <main className='h-full lg:pl-20'>{children}</main>
     </div>
   );

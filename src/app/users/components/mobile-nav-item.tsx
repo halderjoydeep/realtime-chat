@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { IconType } from 'react-icons';
 
-interface DesktopNavItemProps {
+interface MoobileNavItemProps {
   label: string;
   icon: IconType;
   href: string;
@@ -10,20 +10,20 @@ interface DesktopNavItemProps {
   active?: boolean;
 }
 
-export const DesktopNavItem = ({
+export const MoobileNavItem = ({
   label,
   icon: Icon,
   href,
   onClick,
   active,
-}: DesktopNavItemProps) => {
+}: MoobileNavItemProps) => {
   return (
-    <li onClick={onClick}>
+    <li className='w-full' onClick={onClick}>
       <Link
         href={href}
         title={label}
         className={cn(
-          'flex items-center justify-center rounded-md p-3 text-sm leading-6 font-semibold text-gray-500 hover:bg-gray-100 hover:text-black',
+          'flex items-center justify-center p-4 text-sm leading-6 font-semibold text-gray-500 hover:bg-gray-100 hover:text-black',
           { 'bg-gray-100 text-black': active },
         )}
       >
