@@ -1,15 +1,9 @@
-import { signOut } from '@/lib/auth';
+import { EmptyState } from './components';
 
-export default async function Users() {
+export default function Users() {
   return (
-    <form
-      action={async () => {
-        'use server';
-
-        await signOut();
-      }}
-    >
-      <button type='submit'>Log out</button>
-    </form>
+    <div className='hidden h-full lg:block lg:pl-80'>
+      <EmptyState />
+    </div>
   );
 }
