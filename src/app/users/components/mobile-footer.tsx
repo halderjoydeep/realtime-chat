@@ -13,7 +13,7 @@ export const MobileFooter = () => {
   }
 
   return (
-    <div className='bord fixed inset-x-0 bottom-0 z-10 border-t border-gray-200 bg-white lg:hidden'>
+    <div className='fixed inset-x-0 bottom-0 z-10 border-t border-gray-200 bg-white lg:hidden'>
       <nav>
         <ul className='flex items-center justify-between'>
           {routes.map((route) => (

@@ -1,4 +1,9 @@
+import { Metadata } from 'next';
 import { EmptyState } from './components';
+
+export const metadata: Metadata = {
+  title: 'Users',
+};
 
 export default function Users() {
   return (

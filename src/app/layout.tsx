@@ -10,7 +10,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Realtime Chat',
+  title: {
+    default: 'Realtime Chat',
+    template: '%s | Realtime Chat',
+  },
   description: 'A realtime chat application built with Next.js',
   applicationName: 'Realtime Chat',
 };
