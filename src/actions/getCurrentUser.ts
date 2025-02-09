@@ -19,7 +19,7 @@ export const getCurrentUser = async () => {
 
     return currentUser;
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return null;
   }
 };

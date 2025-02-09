@@ -21,7 +21,7 @@ export function DesktopSideBar({ currentUser }: DesktopSideBarProps) {
           ))}
         </ul>
 
-        <Avatar user={currentUser} />
+        <Avatar user={currentUser} active />
       </nav>
     </aside>
   );
